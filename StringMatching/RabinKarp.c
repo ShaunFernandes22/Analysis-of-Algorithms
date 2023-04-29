@@ -13,7 +13,7 @@ int HashFunction(char *pattern, int m) {
 }
 
 // rolling hashfunction computes hash of sliding window
-int HashRoll(char *pattern, int m, char* text, int n, int hash_init, int ct, int power) {
+int RollingHash(char *pattern, int m, char* text, int n, int hash_init, int ct, int power) {
     int value;
     int prev_outgoing_digit = (int)text[ct-1] - 96;
     int next_incoming_digit = (int)text[ct+m-1] - 96;
@@ -55,7 +55,7 @@ int main() {
     int power = pow(10, m-1); // power = 100 in case of 3 letter string
     bool check = false; // if substring found
 
-    // comparing the hash values at beginning of the text string (index 0) as HashRoll would not be applicable
+    // comparing the hash values at beginning of the text string (index 0) as RollingHash would not be applicable
     if (hash_init == hash_pat)
     {
         check = CheckWindow(hash_init, hash_pat, text, pattern, m, ct);
@@ -66,7 +66,7 @@ int main() {
     // for the rest hashes using sliding window (rolling) hashing
     for (ct=1; ct<n-m+1; ct++)
     {
-        hash_init = HashRoll(pattern, m, text, n, hash_init, ct, power);
+        hash_init = RollingHash(pattern, m, text, n, hash_init, ct, power);
         if (hash_init == hash_pat)
         {
             check = CheckWindow(hash_init, hash_pat, text, pattern, m, ct);
