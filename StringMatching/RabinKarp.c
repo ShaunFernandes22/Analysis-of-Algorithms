@@ -23,8 +23,7 @@ int RollingHash(char *pattern, int m, char* text, int n, int hash_init, int ct, 
 }
 
 // on matching of hash values we check if characters are same
-bool CheckWindow(int hash_init, int hash_pat, char *text, char *pattern, int m, int ct)
-{  
+bool CheckWindow(int hash_init, int hash_pat, char *text, char *pattern, int m, int ct) {  
     int i, j, count = 0;
     for (i=ct,j=0 ; j<m; i++, j++)
     {
@@ -56,22 +55,19 @@ int main() {
     bool check = false; // if substring found
 
     // comparing the hash values at beginning of the text string (index 0) as RollingHash would not be applicable
-    if (hash_init == hash_pat)
-    {
+    if (hash_init == hash_pat) {
         check = CheckWindow(hash_init, hash_pat, text, pattern, m, ct);
         if (check)
             printf("Pattern found at shift %d\n", ct);
     }
 
     // for the rest hashes using sliding window (rolling) hashing
-    for (ct=1; ct<n-m+1; ct++)
-    {
+    for (ct=1; ct<n-m+1; ct++) {
         hash_init = RollingHash(pattern, m, text, n, hash_init, ct, power);
-        if (hash_init == hash_pat)
-        {
+        if (hash_init == hash_pat) {
             check = CheckWindow(hash_init, hash_pat, text, pattern, m, ct);
             if (check)
-            printf("Pattern found at shift of %d\n", ct);
+               printf("Pattern found at shift of %d\n", ct);
         }
     }
 
