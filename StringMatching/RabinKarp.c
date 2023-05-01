@@ -43,7 +43,7 @@ int main() {
     printf("Enter the pattern to match : ");
     scanf("%s",pattern);
     
-    int m, n, ct=0;
+    int m, n, ct=0, n_matches=0;
     n = strlen(text);
     m = strlen(pattern);
     
@@ -58,7 +58,10 @@ int main() {
     if (hash_init == hash_pat) {
         check = CheckWindow(hash_init, hash_pat, text, pattern, m, ct);
         if (check)
-            printf("Pattern found at shift %d\n", ct);
+        {
+            n_matches++;
+            printf("Pattern found at shift of %d\n", ct);
+        }    
     }
 
     // for the rest hashes using sliding window (rolling) hashing
@@ -67,11 +70,14 @@ int main() {
         if (hash_init == hash_pat) {
             check = CheckWindow(hash_init, hash_pat, text, pattern, m, ct);
             if (check)
-               printf("Pattern found at shift of %d\n", ct);
+            {
+                n_matches++;
+                printf("Pattern found at shift of %d\n", ct);
+            }    
         }
     }
 
-    if (check == false)
+    if (n_matches == 0)
         printf("The pattern was not found in the string\n");
 
     return 0;
