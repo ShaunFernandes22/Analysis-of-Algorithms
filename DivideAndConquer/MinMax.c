@@ -23,10 +23,10 @@ void min_max(int A[], int i, int j, int max[], int min[], int index, int* min_bo
     else // more than 2 elements
     {
         int mid = (i + j) / 2; 
-        //left subarray call
-        min_max(A, i, mid, max, min, 0, min_both,  max_both);
-        //right subarray call
-        min_max(A, mid + 1, j, max, min, 1, min_both,  max_both);
+        
+        min_max(A, i, mid, max, min, 0, min_both,  max_both); //left subarray call
+        
+        min_max(A, mid + 1, j, max, min, 1, min_both,  max_both); //right subarray call
 
          if (max[0] < max[1] && * max_both < max[1])
             * max_both = max[1];
