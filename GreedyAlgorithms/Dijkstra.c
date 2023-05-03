@@ -29,7 +29,7 @@ int main () {
 
     initializeSingleSource(distance, parent, visited, source);
 
-    dijkstra(graph, distance, visited, parent, source);
+    dijkstra(graph, distance, visited, parent);
     
     printTable(distance, parent);
    
@@ -68,7 +68,7 @@ int minDistance(int distance[], bool visited[]) {
     }*/
 
 //function to identify whether the  condition is applicable for given pair of nodes
-void dijkstra(int graph[][Vertices], int distance[], bool visited[], int parent[], int source)
+void dijkstra(int graph[][Vertices], int distance[], bool visited[], int parent[])
 {
     int u, count;
     for (count = 0; count < Vertices - 1; count++) {
