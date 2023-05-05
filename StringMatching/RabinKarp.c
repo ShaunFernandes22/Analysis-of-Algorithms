@@ -4,7 +4,7 @@
 #include <stdbool.h>
 
 // hash function to calculate hash for pattern and initial text same as pattern length (starting hash)
-int HashFunction(char *pattern, int m) {
+int hashFunction(char *pattern, int m) {
    int i, value=0;
    for (i=0; i<m; i++) //traverse window length and create hashvalue
        value = value*10 + ((int)pattern[i] - 96);
@@ -12,8 +12,8 @@ int HashFunction(char *pattern, int m) {
    return value;
 }
 
-// rolling hashfunction computes hash of sliding window
-int RollingHash(char *pattern, int m, char* text, int n, int hash_init, int ct, int power) {
+//slidingHashFunction computes hash of sliding window
+int slidingHashFunction(char *pattern, int m, char* text, int n, int hash_init, int ct, int power) {
     int value;
     int prev_outgoing_digit = (int)text[ct-1] - 96;
     int next_incoming_digit = (int)text[ct+m-1] - 96;
@@ -48,13 +48,13 @@ int main() {
     m = strlen(pattern);
     
     // calculate starting static hashes
-    int hash_pat = HashFunction(pattern, m);
-    int hash_init = HashFunction(text, m);
+    int hash_pat = hashFunction(pattern, m);
+    int hash_init = hashFunction(text, m);
     
     int power = pow(10, m-1); // power = 100 in case of 3 letter string
     bool check = false; // if substring found
 
-    // comparing the hash values at beginning of the text string (index 0) as RollingHash would not be applicable
+    // comparing the hash values at beginning of the text string (index 0) as slidingHashFunction would not be applicable
     if (hash_init == hash_pat) {
         check = CheckWindow(hash_init, hash_pat, text, pattern, m, ct);
         if (check)
@@ -66,7 +66,7 @@ int main() {
 
     // for the rest hashes using sliding window (rolling) hashing
     for (ct=1; ct<n-m+1; ct++) {
-        hash_init = RollingHash(pattern, m, text, n, hash_init, ct, power);
+        hash_init = slidingHashFunction(pattern, m, text, n, hash_init, ct, power);
         if (hash_init == hash_pat) {
             check = CheckWindow(hash_init, hash_pat, text, pattern, m, ct);
             if (check)
