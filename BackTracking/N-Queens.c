@@ -36,9 +36,9 @@ void nQueens(int solution[], int k, int n){
                 printf("\n");    
             }
             else
-                nQueens(solution, k+1, n); //finding col for next Q
+                nQueens(solution, k+1, n); //finding col for next Queen
 
-            // printf("Failure, Recursive call comes back to Queen %d\n",k) ;
+            // printf("Dead end, Recursive call comes back to Queen %d\n",k) ;
             // checking more possible locations for kth queen as failure in children (backtracking) or success.
         }
     }
