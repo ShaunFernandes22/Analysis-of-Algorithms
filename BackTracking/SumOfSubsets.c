@@ -1,9 +1,3 @@
-/*We sum from 0th to (k-1)th element in array
-if sum + w[k] = m we write soln then check other possible soln
-if sum +w[k] =w[k+1] <= m the soln may be possible 
-a)if (sum + rem)-w[k] >= m --> we ignore kth element and sum possible , 
-b)if sorted, sum + w[k+1] <=m --> sum still possible 
-a) & b) for checking other elements after ignoring kth index*/
 
 #include <stdio.h>
 
