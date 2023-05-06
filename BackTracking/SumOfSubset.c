@@ -1,3 +1,5 @@
+/*s+w[k] , s+w[k] + w[k+1] --> solns possible with w[k], w[k+1]
+s + r - w[k] >= m, s + w[k+1] <= m --> sum possible without w[k]*/
 
 #include <stdio.h>
 
