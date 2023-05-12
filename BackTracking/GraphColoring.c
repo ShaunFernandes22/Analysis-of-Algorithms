@@ -56,7 +56,7 @@ int main() {
     // edges to 1
     for (i=0; i<n_edges; i++) {
         int u, v;
-        printf("Enter the edges (both vertices) : ");
+        printf("Enter the edge %d (both vertices) : ", i+1);
         scanf("%d %d", &u, &v);
         graph[u][v] = graph[v][u] = 1;
     }
