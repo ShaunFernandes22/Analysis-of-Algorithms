@@ -21,7 +21,7 @@ bool graphColoring(int vertex) {
     if (vertex == n_vertices) { // we reached till last depth all assigned colors
         return true;
     }
-
+    // we use colors 1 to m, 0 is no color
     for (int i=1; i<=n_colors; i++) {
         if (isSafe(vertex, i)) {
             colors[vertex] = i; 
@@ -68,7 +68,7 @@ int main() {
         }
     }
     else {
-        printf("The vertices cannot be coloured with %d colours.\n");
+        printf("The vertices cannot be coloured with %d colours.\n",n_colors);
     }
 
     return 0;
