@@ -9,6 +9,7 @@ int graph[MAX][MAX];
 //bounding function checks if color is valid
 bool isSafe(int vertex, int color) {
     for (int i=0; i<n_vertices; i++) {    // i < vertex ??
+        // checking for neighbors and if their color matches
         if (graph[vertex][i] && colors[i] == color) {
             return false;
         }
@@ -63,13 +64,13 @@ int main() {
     // we received true meaning all vertices have been allocated a color
     if (graphColoring(0)) {
         printf("The vertices can be coloured with %d colours\n",n_colors);
+        printf("Vertices \t Colors\n");
         for (i=0; i<n_vertices; i++) {
-            printf("Vertex %d : %d \n", i, colors[i]);
+            printf("Vertex %d : \t\t%d \n", i, colors[i]);
         }
     }
     else {
         printf("The vertices cannot be coloured with %d colours.\n",n_colors);
     }
-
     return 0;
 }
