@@ -12,6 +12,7 @@ int find(int i, int parent[]) {
         parent[i] = parent[j];
         i = j;
     }
+    return i;
 }
 
 // gives union of two disjoint sets by making their absolute parent one
