@@ -24,7 +24,7 @@ void selectionSort(int a[], int n){
         int min =i;
         for(int j=i+1;j<n;j++)
         {
-            if (a[j] > a[i])
+            if (a[j] > a[min])
             min = j;
         }
         if (min!=i)
