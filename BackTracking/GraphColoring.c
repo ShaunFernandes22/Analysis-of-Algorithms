@@ -27,7 +27,7 @@ bool graphColoring(int vertex) {
         if (isSafe(vertex, i)) {
             colors[vertex] = i; 
         
-            if (graphColoring(vertex + 1)) { // true is returned continuously  till some node 
+            if (graphColoring(vertex + 1)) { // true is returned continuously  till starting node as this implementation prints only one possible soln 
                 return true;
             }    
             //if false is returned by v+1 then the given v is assigned invaid color so reset and try other colors
